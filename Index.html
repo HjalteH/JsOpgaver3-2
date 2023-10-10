@@ -41,16 +41,7 @@ let content1 = document.getElementById("content");
 fetchContent("/albums.json").then((albums) => {
     ShowAlbum(0,true);
 
-/*
-let testObj = new Album(albums.albumNam)
 
-function Album(albumName, artistName, website, genre){
-this.albumName = albumName;
-this.artistName = artistName;
-this.website = website;
-this.genre = genre;
-}
-*/
 
 document.getElementById("btn1").onclick = function() {ShowAlbum("Rock")};
 document.getElementById("btn2").onclick = function() {ShowAlbum("Pop Rock")};
