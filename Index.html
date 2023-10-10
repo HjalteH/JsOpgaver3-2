@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="albums.json">
+
+<style>
+    
+</style>
+</head>
+<body>
+
+
+<button id="btn1">
+    Rock
+</button>
+
+<button id="btn2">
+    Pop Rock
+</button>
+
+<button id="btn3">
+    Alternative Rock 
+</button>
+
+<button id="btn4">
+    Funk
+</button>
+
+<button id="btn5">
+    Movie Soundtrack
+</button>
+  
+<p id="content"> 
+    
+</p>
+<script>  
+let content1 = document.getElementById("content");
+
+
+
+fetchContent("/albums.json").then((albums) => {
+    ShowAlbum(0,true);
+
+/*
+let testObj = new Album(albums.albumNam)
+
+function Album(albumName, artistName, website, genre){
+this.albumName = albumName;
+this.artistName = artistName;
+this.website = website;
+this.genre = genre;
+}
+*/
+
+document.getElementById("btn1").onclick = function() {ShowAlbum("Rock")};
+document.getElementById("btn2").onclick = function() {ShowAlbum("Pop Rock")};
+document.getElementById("btn3").onclick = function() {ShowAlbum("Alternative Rock")};
+document.getElementById("btn4").onclick = function() {ShowAlbum("Funk")};
+document.getElementById("btn5").onclick = function() {ShowAlbum("Movie Soundtrack")};
+
+function ShowAlbum(genretag, loadAll){
+content1.innerHTML = " ";
+for(i = 0; i < albums.length; i++){
+
+    if(genretag == albums[i].genre || loadAll == true){ 
+    content1.innerHTML += "Artist: " + albums[i].artistName + "<br>";
+    
+    content1.innerHTML += "Album: " + albums[i].albumName + "<br>";
+    
+    content1.innerHTML += "Website: " + albums[i].artistWebsite + "<br>";
+
+    content1.innerHTML += "Genre: " + albums[i].genre + "<br>";
+    
+    content1.innerHTML += "<br>";  
+}     
+}
+console.log("Du har trykket");
+}
+
+});
+
+
+
+
+async function fetchContent(url) {
+  let request = await fetch(url);
+  let json = await request.json();
+  return json;
+}
+</script>
+
+
+</body>
+
+</html>
